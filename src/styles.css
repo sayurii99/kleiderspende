@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+:root
+{
+  --bs-body-bg: #f6f1eb;
+}
+
+/*Buttons*/
+
+.btn-primary
+{
+  --bs-btn-bg: #04bbe3;
+  --bs-btn-border-color: #fff;
+}
