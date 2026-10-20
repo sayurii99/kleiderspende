@@ -10,5 +10,5 @@ import {Header} from './layout/header/header';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('Kleiderspende');
+  protected readonly title = signal('Kleiderliga');
 }
