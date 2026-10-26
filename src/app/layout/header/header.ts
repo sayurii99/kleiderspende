@@ -14,4 +14,9 @@ export class Header {
   toggleMenu() {
     this.menuOffen.update((vorher) => !vorher);
   }
+
+  //Methode zum Menü schließen
+  closeMenu() {
+    this.menuOffen.set(false);
+    }
 }
