@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Spende } from '../../models/spende';
 
 @Component({
   imports: [],
