@@ -2,6 +2,7 @@
 
 <p>{{ spende | json }}</p>
 
+<!-- Button für Übergabe-->
 <div class="form-check">
   <input class="form-check-input" type="radio" name="uebergabe" [value]="true" id="uebergabe1" [(ngModel)]="spende.uebergabe">
   <label class="form-check-label" for="uebergabe1">
@@ -9,15 +10,23 @@
   </label>
 </div>
 
+<!-- Button für Abholung-->
 <div class="form-check">
   <input class="form-check-input" type="radio" name="uebergabe" [value]="false" id="uebergabe2" [(ngModel)]="spende.uebergabe">
   <label class="form-check-label" for="uebergabe2">
     Ich wohne innerhalb des Radius* und möchte, dass meine Spende abgeholt wird.
   </label>
 </div>
-
 <p>*wir bieten eine Abholung nur innerhalb der Stadt Thun an sowie an allen umliegenden Orten, bei denen die Postleitzahl mit 36 beginnt (z.B. 3600). Für Ihr Verständnis bedanken wir uns. </p>
 
+<!-- Auswahl Krisengebiet-->
+<label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>
+<select class="form-select" aria-label="Krisengebiet" id="krisengebiet-auswahl" [(ngModel)]="spende.krisengebiet" name="krisengebiet">
+  <option value="" disabled selected>Auswahl öffnen...</option>
+  @for (gebiet of krisengebiete; track gebiet) {
+    <option [value]="gebiet">{{gebiet}}</option>
+  }
+</select>
 
 <!-- Platzhalter
 

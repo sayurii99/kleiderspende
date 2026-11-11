@@ -12,4 +12,5 @@ import {JsonPipe} from '@angular/common'; //Textfelder testen
 
 export class Registration {
   spende = new Spende();
+  krisengebiete = ["Ukraine", "Nahost","Sudan","Myanmar"];
 }
