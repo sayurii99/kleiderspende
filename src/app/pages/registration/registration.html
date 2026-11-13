@@ -28,7 +28,37 @@
   }
 </select>
 
+<!-- Mehrfachauswahl der Kleiderart -->
+<div class="mb-3">
+  <p class="form-label">Wählen Sie hier die Art der Kleider aus (Mehrfachauswahl möglich):</p>
+
+  @for (art of kleiderarten; track art) {
+    <div class="form-check">
+      <!-- Verlinkung input mit Label-->
+      <input class="form-check-input" type="checkbox" [id]="'kleiderart-' + $index" #auswahl (change)="kleiderartAendern(art,auswahl.checked)">
+      <label class="form-check-label" [for]="'kleiderart-' + $index">
+        {{ art }}
+      </label>
+    </div>
+  }
+</div>
+
+
 <!-- Platzhalter
+
+<div class="form-check">
+<label class="form-check-label" for="checkDefault">
+    Default checkbox
+  </label>
+  <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+  <label class="form-check-label" for="checkChecked">
+    Checked checkbox
+  </label>
+</div>
 
 <input type="boolean" class="form-control" id="uebergabe" required [(ngModel)]="spende.uebergabe" name="uebergabe" />
 
