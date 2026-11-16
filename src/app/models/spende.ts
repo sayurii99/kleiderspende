@@ -8,5 +8,5 @@ export class Spende {
   hausNr: string = '';
   plz: string = '';
   ort: string = '';
-  mail: string = '';
+  email: string = '';
 }
