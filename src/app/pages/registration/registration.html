@@ -6,18 +6,50 @@
 <div class="form-check">
   <input class="form-check-input" type="radio" name="uebergabe" [value]="true" id="uebergabe1" [(ngModel)]="spende.uebergabe">
   <label class="form-check-label" for="uebergabe1">
-    Ich bringe die Spende an die Geschäftsstelle.
-  </label>
+    Ich bringe die Spende an die Geschäftsstelle.</label>
 </div>
 
 <!-- Button für Abholung-->
 <div class="form-check">
   <input class="form-check-input" type="radio" name="uebergabe" [value]="false" id="uebergabe2" [(ngModel)]="spende.uebergabe">
   <label class="form-check-label" for="uebergabe2">
-    Ich wohne innerhalb des Radius* und möchte, dass meine Spende abgeholt wird.
-  </label>
+    Ich wohne innerhalb des Radius* und möchte, dass meine Spende abgeholt wird.</label>
 </div>
 <p>*wir bieten eine Abholung nur innerhalb der Stadt Thun an sowie an allen umliegenden Orten, bei denen die Postleitzahl mit 36 beginnt (z.B. 3600). Für Ihr Verständnis bedanken wir uns. </p>
+
+<!-- Adressfelder für Abholung-->
+@if (!spende.uebergabe){
+  <div class="mb-3">
+    <label class="form-label" for="vorname">Vorname</label>
+    <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname" placeholder="Vorname">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="nachname">Nachname</label>
+    <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname" placeholder="Nachname">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="strasse">Strasse</label>
+    <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse" placeholder="Strasse">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="hausnr">Hausnummer</label>
+    <input class="form-control" type="text" id="hausnr" [(ngModel)]="spende.hausNr" name="hausnr" placeholder="Hausnummer">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="plz">Postleitzahl</label>
+    <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl" placeholder="Postleitzahl">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="ort">Ort</label>
+    <input class="form-control" type="text" id="ort" [(ngModel)]="spende.ort" name="ort" placeholder="Ort">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="email">E-Mail</label>
+    <input class="form-control" type="email" id="email" [(ngModel)]="spende.email" name="email" placeholder="E-Mail-Adresse">
+  </div>
+}
+
+
 
 <!-- Auswahl Krisengebiet-->
 <label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>

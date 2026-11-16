@@ -15,6 +15,8 @@ export class Registration {
   krisengebiete = ["Ukraine", "Nahost","Sudan","Myanmar"];
   kleiderarten = ["Hüte","Oberteile","Hosen","Socken","Schuhe","sonstiges Zubehör"];
 
+  //Ankreuzfelder Wertübergabe
+
   kleiderartAendern(art: string, angekreuzt: boolean) {
       if (angekreuzt) {
         this.spende.kleiderart.push(art);
@@ -22,6 +24,7 @@ export class Registration {
         this.spende.kleiderart = this.spende.kleiderart.filter((a) => a !== art);
       }
     }
+
   }
 
 
