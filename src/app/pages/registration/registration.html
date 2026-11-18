@@ -2,106 +2,149 @@
 
 <p>{{ spende | json }}</p>
 
-<!-- Button für Übergabe-->
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="uebergabe" [value]="true" id="uebergabe1" [(ngModel)]="spende.uebergabe">
-  <label class="form-check-label" for="uebergabe1">
-    Ich bringe die Spende an die Geschäftsstelle.</label>
-</div>
+<form (ngSubmit)="absenden()">
 
-<!-- Button für Abholung-->
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="uebergabe" [value]="false" id="uebergabe2" [(ngModel)]="spende.uebergabe">
-  <label class="form-check-label" for="uebergabe2">
-    Ich wohne innerhalb des Radius* und möchte, dass meine Spende abgeholt wird.</label>
-</div>
-<p>*wir bieten eine Abholung nur innerhalb der Stadt Thun an sowie an allen umliegenden Orten, bei denen die Postleitzahl mit 36 beginnt (z.B. 3600). Für Ihr Verständnis bedanken wir uns. </p>
+  <!-- Button für Übergabe-->
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="uebergabe" [value]="true" id="uebergabe1"
+           [(ngModel)]="spende.uebergabe">
+    <label class="form-check-label" for="uebergabe1">
+      Ich bringe die Spende an die Geschäftsstelle.</label>
+  </div>
 
-<!-- Adressfelder für Abholung-->
+  <!-- Button für Abholung-->
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="uebergabe" [value]="false" id="uebergabe2"
+           [(ngModel)]="spende.uebergabe">
+    <label class="form-check-label" for="uebergabe2">
+      Ich wohne innerhalb des Radius* und möchte, dass meine Spende abgeholt wird.</label>
+  </div>
+
+  <p>*wir bieten eine Abholung nur innerhalb der Stadt Thun an sowie an allen umliegenden Orten, bei denen die
+    Postleitzahl mit 36 beginnt (z.B. 3600). Für Ihr Verständnis bedanken wir uns. </p>
+
+
+  <!-- Adressfelder für Abholung-->
+
 @if (!spende.uebergabe){
+
+
+  <!--Vorname-->
   <div class="mb-3">
     <label class="form-label" for="vorname">Vorname</label>
-    <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname" placeholder="Vorname">
+    <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname"
+           placeholder="Vorname" #vorname="ngModel" required>
+    @if (vorname.invalid && (vorname.dirty || vorname.touched)) {
+      <div class="alert">
+        @if (vorname.hasError('required')) {
+          <div>Bitte geben Sie Ihren Vornamen ein.</div>
+        }
+      </div>
+    }
   </div>
+
+  <!-- Nachname-->
   <div class="mb-3">
     <label class="form-label" for="nachname">Nachname</label>
-    <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname" placeholder="Nachname">
+    <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname"
+           placeholder="Nachname" #nachname="ngModel" required>
   </div>
+
+  <!--Strasse-->
   <div class="mb-3">
     <label class="form-label" for="strasse">Strasse</label>
-    <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse" placeholder="Strasse">
+    <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse"
+           placeholder="Strasse" #strasse="ngModel" required>
   </div>
+
+  <!--Hausnummer-->
   <div class="mb-3">
     <label class="form-label" for="hausnr">Hausnummer</label>
-    <input class="form-control" type="text" id="hausnr" [(ngModel)]="spende.hausNr" name="hausnr" placeholder="Hausnummer">
+    <input class="form-control" type="text" id="hausnr" [(ngModel)]="spende.hausNr" name="hausnr"
+           placeholder="Hausnummer" #hausnummer="ngModel" required>
   </div>
+
+  <!-- Postleitzahl-->
   <div class="mb-3">
     <label class="form-label" for="plz">Postleitzahl</label>
-    <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl" placeholder="Postleitzahl">
+    <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl"
+           placeholder="Postleitzahl" #postleitzahl="ngModel" required>
   </div>
+
+  <!--Ort-->
   <div class="mb-3">
     <label class="form-label" for="ort">Ort</label>
-    <input class="form-control" type="text" id="ort" [(ngModel)]="spende.ort" name="ort" placeholder="Ort">
+    <input class="form-control" type="text" id="ort" [(ngModel)]="spende.ort" name="ort" placeholder="Ort"
+           #ort="ngModel" required>
   </div>
+
+  <!--E-Mail-->
   <div class="mb-3">
     <label class="form-label" for="email">E-Mail</label>
-    <input class="form-control" type="email" id="email" [(ngModel)]="spende.email" name="email" placeholder="E-Mail-Adresse">
+    <input class="form-control" type="email" id="email" [(ngModel)]="spende.email" name="email"
+           placeholder="E-Mail-Adresse" #email="ngModel" required>
   </div>
 }
 
 
 
-<!-- Auswahl Krisengebiet-->
-<label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>
-<select class="form-select" aria-label="Krisengebiet" id="krisengebiet-auswahl" [(ngModel)]="spende.krisengebiet" name="krisengebiet">
-  <option value="" disabled selected>Auswahl öffnen...</option>
-  @for (gebiet of krisengebiete; track gebiet) {
-    <option [value]="gebiet">{{gebiet}}</option>
-  }
-</select>
+  <!-- Auswahl Krisengebiet-->
+  <label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>
+  <select class="form-select" aria-label="Krisengebiet" id="krisengebiet-auswahl" [(ngModel)]="spende.krisengebiet"
+          name="krisengebiet" required>
+    <option value="" disabled selected>Auswahl öffnen...</option>
+    @for (gebiet of krisengebiete; track gebiet) {
+      <option [value]="gebiet">{{ gebiet }}</option>
+    }
+  </select>
 
-<!-- Mehrfachauswahl der Kleiderart -->
-<div class="mb-3">
-  <p class="form-label">Wählen Sie hier die Art der Kleider aus (Mehrfachauswahl möglich):</p>
+  <!-- Mehrfachauswahl der Kleiderart -->
+  <div class="mb-3">
+    <p class="form-label">Wählen Sie hier die Art der Kleider aus (Mehrfachauswahl möglich):</p>
+    @for (art of kleiderarten; track art) {
+      <div class="form-check">
+        <!-- Verlinkung input mit Label-->
+        <input class="form-check-input" type="checkbox" [id]="'kleiderart-' + $index" #auswahl
+               (change)="kleiderartAendern(art,auswahl.checked)">
+        <label class="form-check-label" [for]="'kleiderart-' + $index">
+          {{ art }}
+        </label>
+      </div>
+    }
+  </div>
 
-  @for (art of kleiderarten; track art) {
-    <div class="form-check">
-      <!-- Verlinkung input mit Label-->
-      <input class="form-check-input" type="checkbox" [id]="'kleiderart-' + $index" #auswahl (change)="kleiderartAendern(art,auswahl.checked)">
-      <label class="form-check-label" [for]="'kleiderart-' + $index">
-        {{ art }}
-      </label>
-    </div>
-  }
-</div>
+  <!-- Button für absenden-->
+  <button type="submit" class="btn btn-primary">Formular absenden</button>
+
+
+</form>
 
 
 <!-- Platzhalter
 
-<div class="form-check">
-<label class="form-check-label" for="checkDefault">
-    Default checkbox
-  </label>
-  <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-</div>
 
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
-  <label class="form-check-label" for="checkChecked">
-    Checked checkbox
-  </label>
-</div>
+<input
+  type="text"
+  id="name"
+  name="name"
+  class="form-control"
+  required
+  minlength="4"
+  appForbiddenName="bob"
+  [(ngModel)]="actor.name"
+  #name="ngModel"
+/>
 
-<input type="boolean" class="form-control" id="uebergabe" required [(ngModel)]="spende.uebergabe" name="uebergabe" />
-
-
-
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
-
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div> -->
+@if (name.invalid && (name.dirty || name.touched)) {
+  <div class="alert">
+    @if (name.hasError('required')) {
+      <div>Name is required.</div>
+    }
+    @if (name.hasError('minlength')) {
+      <div>Name must be at least 4 characters long.</div>
+    }
+    @if (name.hasError('forbiddenName')) {
+      <div>Name cannot be Bob.</div>
+    }
+  </div>
+} -->
