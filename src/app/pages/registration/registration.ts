@@ -25,6 +25,13 @@ export class Registration {
       }
     }
 
+    //Formular absenden
+  absenden() {
+    console.log(this.spende);
+
+
+  }
+
   }
 
 
