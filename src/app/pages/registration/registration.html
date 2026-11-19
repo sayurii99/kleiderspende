@@ -26,65 +26,114 @@
 
   <!-- Adressfelder für Abholung-->
 
-@if (!spende.uebergabe){
+  @if (!spende.uebergabe) {
 
 
-  <!--Vorname-->
-  <div class="mb-3">
-    <label class="form-label" for="vorname">Vorname</label>
-    <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname"
-           placeholder="Vorname" #vorname="ngModel" required>
-    @if (vorname.invalid && (vorname.dirty || vorname.touched)) {
-      <div class="alert">
-        @if (vorname.hasError('required')) {
-          <div>Bitte geben Sie Ihren Vornamen ein.</div>
-        }
-      </div>
-    }
-  </div>
+    <!--Vorname-->
+    <div class="mb-3">
+      <label class="form-label" for="vorname">Vorname</label>
+      <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname"
+             placeholder="Vorname" #vorname="ngModel" required
+             [class.is-invalid]="(vorname.invalid && (vorname.dirty || vorname.touched))">
+      @if (vorname.invalid && (vorname.dirty || vorname.touched)) {
+        <div class="invalid-feedback" id="vorname-fehler">
+          @if (vorname.hasError("required")) {
+            <div>Bitte geben Sie Ihren Vornamen ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!-- Nachname-->
-  <div class="mb-3">
-    <label class="form-label" for="nachname">Nachname</label>
-    <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname"
-           placeholder="Nachname" #nachname="ngModel" required>
-  </div>
+    <!-- Nachname-->
+    <div class="mb-3">
+      <label class="form-label" for="nachname">Nachname</label>
+      <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname"
+             placeholder="Nachname" #nachname="ngModel" required
+             [class.is-invalid]="(nachname.invalid && (nachname.dirty || nachname.touched))">
+      @if (nachname.invalid && (nachname.dirty || nachname.touched)) {
+        <div class="invalid-feedback" id="nachname-fehler">
+          @if (nachname.hasError("required")) {
+            <div>Bitte geben Sie Ihren Nachnamen ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!--Strasse-->
-  <div class="mb-3">
-    <label class="form-label" for="strasse">Strasse</label>
-    <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse"
-           placeholder="Strasse" #strasse="ngModel" required>
-  </div>
+    <!--Strasse-->
+    <div class="mb-3">
+      <label class="form-label" for="strasse">Strasse</label>
+      <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse"
+             placeholder="Strasse" #strasse="ngModel" required
+             [class.is-invalid]="(strasse.invalid && (strasse.dirty || strasse.touched))">
+      @if (strasse.invalid && (strasse.dirty || strasse.touched)) {
+        <div class="invalid-feedback" id="strasse-fehler">
+          @if (strasse.hasError("required")) {
+            <div>Bitte geben Sie Ihre Strasse ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!--Hausnummer-->
-  <div class="mb-3">
-    <label class="form-label" for="hausnr">Hausnummer</label>
-    <input class="form-control" type="text" id="hausnr" [(ngModel)]="spende.hausNr" name="hausnr"
-           placeholder="Hausnummer" #hausnummer="ngModel" required>
-  </div>
+    <!--Hausnummer-->
+    <div class="mb-3">
+      <label class="form-label" for="hausnr">Hausnummer</label>
+      <input class="form-control" type="text" id="hausnr" [(ngModel)]="spende.hausNr" name="hausnr"
+             placeholder="Hausnummer" #hausnummer="ngModel" required
+             [class.is-invalid]="(hausnummer.invalid && (hausnummer.dirty || hausnummer.touched))">
+      @if (hausnummer.invalid && (hausnummer.dirty || hausnummer.touched)) {
+        <div class="invalid-feedback" id="hausnummer-fehler">
+          @if (hausnummer.hasError("required")) {
+            <div>Bitte geben Sie Ihre Hausnummer ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!-- Postleitzahl-->
-  <div class="mb-3">
-    <label class="form-label" for="plz">Postleitzahl</label>
-    <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl"
-           placeholder="Postleitzahl" #postleitzahl="ngModel" required>
-  </div>
+    <!-- Postleitzahl-->
+    <div class="mb-3">
+      <label class="form-label" for="plz">Postleitzahl</label>
+      <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl"
+             placeholder="Postleitzahl" #postleitzahl="ngModel" required
+             [class.is-invalid]="(postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched))">
+      @if (postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched)) {
+        <div class="invalid-feedback" id="postleitzahl-fehler">
+          @if (postleitzahl.hasError("required")) {
+            <div>Bitte geben Sie Ihre Postleitzahl ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!--Ort-->
-  <div class="mb-3">
-    <label class="form-label" for="ort">Ort</label>
-    <input class="form-control" type="text" id="ort" [(ngModel)]="spende.ort" name="ort" placeholder="Ort"
-           #ort="ngModel" required>
-  </div>
+    <!--Ort-->
+    <div class="mb-3">
+      <label class="form-label" for="ort">Ort</label>
+      <input class="form-control" type="text" id="ort" [(ngModel)]="spende.ort" name="ort" placeholder="Ort"
+             #ort="ngModel" required
+             [class.is-invalid]="(ort.invalid && (ort.dirty || ort.touched))">
+      @if (ort.invalid && (ort.dirty || ort.touched)) {
+        <div class="invalid-feedback" id="ort-fehler">
+          @if (ort.hasError("required")) {
+            <div>Bitte geben Sie Ihren Wohnort ein.</div>
+          }
+        </div>
+      }
+    </div>
 
-  <!--E-Mail-->
-  <div class="mb-3">
-    <label class="form-label" for="email">E-Mail</label>
-    <input class="form-control" type="email" id="email" [(ngModel)]="spende.email" name="email"
-           placeholder="E-Mail-Adresse" #email="ngModel" required>
-  </div>
-}
+    <!--E-Mail-->
+    <div class="mb-3">
+      <label class="form-label" for="email">E-Mail</label>
+      <input class="form-control" type="email" id="email" [(ngModel)]="spende.email" name="email"
+             placeholder="E-Mail-Adresse" #email="ngModel" required
+             [class.is-invalid]="(email.invalid && (email.dirty || email.touched))">
+      @if (email.invalid && (email.dirty || email.touched)) {
+        <div class="invalid-feedback" id="email-fehler">
+          @if (email.hasError("required")) {
+            <div>Bitte geben Sie Ihre E-Mail Adresse ein.</div>
+          }
+        </div>
+      }
+    </div>
+  }
 
 
 
