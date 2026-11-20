@@ -40,6 +40,9 @@
           @if (vorname.hasError("required")) {
             <div>Bitte geben Sie Ihren Vornamen ein.</div>
           }
+          @if (vorname.hasError("pattern")) {
+            <div>Der Vorname darf nur Buchstaben, Apostrophe und Bindestriche beinhalten.</div>
+          }
         </div>
       }
     </div>
