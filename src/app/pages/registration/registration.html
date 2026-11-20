@@ -33,7 +33,7 @@
     <div class="mb-3">
       <label class="form-label" for="vorname">Vorname</label>
       <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname"
-             placeholder="Vorname" #vorname="ngModel" required
+             placeholder="Vorname" #vorname="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`]*"
              [class.is-invalid]="(vorname.invalid && (vorname.dirty || vorname.touched))">
       @if (vorname.invalid && (vorname.dirty || vorname.touched)) {
         <div class="invalid-feedback" id="vorname-fehler">
@@ -92,7 +92,7 @@
     <!-- Postleitzahl-->
     <div class="mb-3">
       <label class="form-label" for="plz">Postleitzahl</label>
-      <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="postleitzahl"
+      <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="plz"
              placeholder="Postleitzahl" #postleitzahl="ngModel" required
              [class.is-invalid]="(postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched))">
       @if (postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched)) {
@@ -138,14 +138,16 @@
 
 
   <!-- Auswahl Krisengebiet-->
-  <label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>
-  <select class="form-select" aria-label="Krisengebiet" id="krisengebiet-auswahl" [(ngModel)]="spende.krisengebiet"
-          name="krisengebiet" required>
-    <option value="" disabled selected>Auswahl öffnen...</option>
-    @for (gebiet of krisengebiete; track gebiet) {
-      <option [value]="gebiet">{{ gebiet }}</option>
-    }
-  </select>
+  <div class="mb-3">
+    <label for="krisengebiet-auswahl">Wählen Sie hier ein Krisengebiet aus:</label>
+    <select class="form-select" aria-label="Krisengebiet" id="krisengebiet-auswahl" [(ngModel)]="spende.krisengebiet"
+            name="krisengebiet" required>
+      <option value="" disabled selected>Auswahl öffnen...</option>
+      @for (gebiet of krisengebiete; track gebiet) {
+        <option [value]="gebiet">{{ gebiet }}</option>
+      }
+    </select>
+  </div>
 
   <!-- Mehrfachauswahl der Kleiderart -->
   <div class="mb-3">
