@@ -33,7 +33,7 @@
     <div class="mb-3">
       <label class="form-label" for="vorname">Vorname</label>
       <input class="form-control" type="text" id="vorname" [(ngModel)]="spende.vorname" name="vorname"
-             placeholder="Vorname" #vorname="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`' ]*"
+             placeholder="Vorname" #vorname="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`']+([ ])?"
              [class.is-invalid]="(vorname.invalid && (vorname.dirty || vorname.touched))">
       @if (vorname.invalid && (vorname.dirty || vorname.touched)) {
         <div class="invalid-feedback" id="vorname-fehler">
@@ -51,7 +51,7 @@
     <div class="mb-3">
       <label class="form-label" for="nachname">Nachname</label>
       <input class="form-control" type="text" id="nachname" [(ngModel)]="spende.nachname" name="nachname"
-             placeholder="Nachname" #nachname="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`' ]*"
+             placeholder="Nachname" #nachname="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`']+([ ])?"
              [class.is-invalid]="(nachname.invalid && (nachname.dirty || nachname.touched))">
       @if (nachname.invalid && (nachname.dirty || nachname.touched)) {
         <div class="invalid-feedback" id="nachname-fehler">
@@ -69,7 +69,7 @@
     <div class="mb-3">
       <label class="form-label" for="strasse">Strasse</label>
       <input class="form-control" type="text" id="strasse" [(ngModel)]="spende.strasse" name="strasse"
-             placeholder="Strasse" #strasse="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`' ]*"
+             placeholder="Strasse" #strasse="ngModel" required pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-žḀ-ỿ\-\´\`' .]*"
              [class.is-invalid]="(strasse.invalid && (strasse.dirty || strasse.touched))">
       @if (strasse.invalid && (strasse.dirty || strasse.touched)) {
         <div class="invalid-feedback" id="strasse-fehler">
