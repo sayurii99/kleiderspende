@@ -105,7 +105,7 @@
     <div class="mb-3">
       <label class="form-label" for="plz">Postleitzahl</label>
       <input class="form-control" type="text" id="plz" [(ngModel)]="spende.plz" name="plz"
-             placeholder="Postleitzahl" #postleitzahl="ngModel" required pattern="[0-9]{4}"
+             placeholder="Postleitzahl" #postleitzahl="ngModel" required pattern="36[0-9]{2}"
              [class.is-invalid]="(postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched))">
       @if (postleitzahl.invalid && (postleitzahl.dirty || postleitzahl.touched)) {
         <div class="invalid-feedback" id="postleitzahl-fehler">
@@ -113,12 +113,10 @@
             <div>Bitte geben Sie Ihre Postleitzahl ein.</div>
           }
           @if (postleitzahl.hasError("pattern")) {
-            <div>Die Postleitzahl darf ausschliesslich aus einer vierstelligen Zahl bestehen.</div>
+            <div>Bitte geben Sie eine vierstellige Postleitzahl ein, die mit 36 beginnt. Für andere Gebiete bitten wir
+              Sie, die Spende an unsere Geschäftsstelle zu bringen.
+            </div>
           }
-          <!-- Platzhalter if für Abgleich der ersten beiden Ziffern
-            @if (hausnummer.hasError("pattern")) {
-            <div>Leider liegt Ihre Adresse nicht in unserem Abholradius. Bitte bringen Sie die Spende an unsere Geschäftsstelle.</div>
-          }-->
         </div>
       }
     </div>
