@@ -1,5 +1,5 @@
 import {Component, signal} from '@angular/core';
-import { Spende } from '../../models/spende';
+import {Spende} from '../../models/spende';
 import {FormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common'; //Textfelder testen
 
@@ -12,26 +12,21 @@ import {JsonPipe} from '@angular/common'; //Textfelder testen
 
 export class Registration {
   spende = new Spende();
-  krisengebiete = ["Ukraine", "Nahost","Sudan","Myanmar"];
-  kleiderarten = ["Hüte","Oberteile","Hosen","Socken","Schuhe","sonstiges Zubehör"];
+  krisengebiete = ["Ukraine", "Nahost", "Sudan", "Myanmar"];
+  kleiderarten = ["Hüte", "Oberteile", "Hosen", "Socken", "Schuhe", "sonstiges Zubehör"];
 
   //Ankreuzfelder Wertübergabe
 
   kleiderartAendern(art: string, angekreuzt: boolean) {
-      if (angekreuzt) {
-        this.spende.kleiderart.push(art);
-      } else {
-        this.spende.kleiderart = this.spende.kleiderart.filter((a) => a !== art);
-      }
+    if (angekreuzt) {
+      this.spende.kleiderart.push(art);
+    } else {
+      this.spende.kleiderart = this.spende.kleiderart.filter((a) => a !== art);
     }
+  }
 
-    //Formular absenden
+  //Formular absenden
   absenden() {
     console.log(this.spende);
-
-
   }
-
-  }
-
-
+}
